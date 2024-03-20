@@ -1,15 +1,23 @@
 import logo from './logo.svg';
-import './App.css';
+import "@aws-amplify/ui-react/styles.css";
+import {
+withAuthenticator,
+Button,
+Heading,
+Image,
+View,
+Card,
+} from "@aws-amplify/ui-react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="logo" className="App-logo" />
-        <h1>Hello from V2</h1>
-      </header>
-    </div>
+function App({signOut}) {
+  return(
+    <View className="App">
+      <Card>
+        <Image src={logo} alt="logo" className="App-logo" />
+        <Heading level={1}>Welcome to Your Amplify App</Heading>
+        <Button onClick={signOut}>Sign Out</Button>
+      </Card>
+    </View>
   );
 }
-
-export default App;
+export default withAuthenticator(App);
